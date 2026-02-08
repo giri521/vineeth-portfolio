@@ -453,7 +453,7 @@
             overflow: hidden;
             cursor: pointer;
             transition: var(--transition);
-            height: 500px;
+            height: 550px;
         }
 
         .work-item:hover {
@@ -491,7 +491,7 @@
             font-size: 1.4rem;
             font-weight: 700;
             color: white;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .work-description {
@@ -924,6 +924,28 @@
     object-fit: contain;
     height: auto;
 }
+.project-image-item.landscape {
+    width: 100%;
+    max-height: 90vh;
+}
+
+/* ===============================
+   PROJECT 1 – NO FORCE FIT
+================================ */
+
+.project-image-item.no-force {
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+.project-image-item.no-force img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+    max-height: none !important;
+    object-fit: contain !important;
+}
 
 /* ===============================
    PROJECT 2 – FIXED JURY GRID (ROW 7 LIKE ROW 1)
@@ -1026,6 +1048,27 @@
 }
 
 /* ===============================
+   REDUCE GAP BETWEEN SELECTED WORKS
+================================ */
+
+/* Remove extra top padding from Selected Works 2 */
+#projects-2 {
+    padding-top: 20px !important;
+}
+
+/* Reduce bottom padding of Selected Works 1 */
+#projects {
+    padding-bottom: 20px !important;
+}
+
+/* Prevent forced full-height spacing */
+#projects,
+#projects-2 {
+    min-height: auto !important;
+    height: auto !important;
+}
+
+/* ===============================
    /* ===============================
    PROJECT 3 – CUSTOM JURY GRID
 ================================ */
@@ -1039,11 +1082,28 @@
     max-height: 100vh;
 }
 
+/* ===============================
+   PROJECT 3 – SOLAR VIDEO (NO CROP, FIXED)
+================================ */
+
+#project3Detail .p3-video-wrapper {
+    width: 100%;
+    height: auto !important;        /* ✅ remove forced height */
+    max-height: none !important;    /* ✅ allow natural height */
+    background: #000;
+    display: flex;
+    justify-content: center;
+}
+
+/* Video itself */
 #project3Detail .p3-video-wrapper video {
     width: 100%;
-    height: 100%;
-    object-fit: cover;           /* cinematic crop */
+    height: auto !important;        /* ✅ critical */
+    max-height: 90vh;               /* safe jury limit */
+    object-fit: contain !important; /* ✅ FULL FRAME */
+    display: block;
 }
+
 
 /* Wrapper */
 .p3-grid {
@@ -1147,6 +1207,50 @@
         height: 60px;
         font-size: 22px;
     }
+}
+/* ===============================
+   PROJECT 3 – VIDEO SLIDER
+================================ */
+
+.p3-video-slider {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+
+    width: 80%;
+    height: 4px;
+
+    appearance: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    cursor: pointer;
+
+    z-index: 5;
+}
+
+/* Progress */
+.p3-video-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.p3-video-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+/* Hide slider until video starts */
+.p3-video-wrapper:not(.playing) .p3-video-slider {
+    opacity: 0;
+    pointer-events: none;
 }
 
         /* ===============================
@@ -1976,6 +2080,148 @@ a,
 .image-number {
     display: none !important;
 }
+/* =================================================
+   MOBILE STRUCTURE FIX – GLOBAL (SAFE OVERRIDES)
+================================================= */
+
+@media (max-width: 768px) {
+
+    /* ---------------------------------
+       RESET SECTION HEIGHT & ZOOM
+    --------------------------------- */
+    .section {
+        min-height: auto !important;
+        height: auto !important;
+        padding: 60px 20px !important;
+    }
+
+    .zoom-container {
+        transform: none !important;
+        height: auto !important;
+    }
+
+    .section.zooming,
+    .section.zooming-out {
+        box-shadow: none !important;
+    }
+
+    /* ---------------------------------
+       HERO FIX
+    --------------------------------- */
+    #home {
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .hero-right-content {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin: 120px auto 0;
+        text-align: center;
+        max-width: 90%;
+    }
+
+    .hero-description {
+        margin-top: 40px !important;
+        text-align: center;
+    }
+
+    .hero-contact {
+        position: static;
+        margin-top: 40px;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* ---------------------------------
+       SELECTED WORKS GRID
+    --------------------------------- */
+    .works-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .work-item {
+        height: auto !important;
+    }
+
+    .work-img {
+        height: auto !important;
+        object-fit: cover;
+    }
+
+    /* ---------------------------------
+       PROJECT DETAIL IMAGES (CRITICAL)
+    --------------------------------- */
+    .project-image-item,
+    .project-image-item.landscape,
+    .project-image-item.portrait,
+    .project-image-item.square {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: none !important;
+    }
+
+    .project-image-item img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    /* ---------------------------------
+       GSEN GRID FIX
+    --------------------------------- */
+    .gsen-grid,
+    .gsen-row-2,
+    .gsen-row-2-right {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ---------------------------------
+       ALL PROJECT CUSTOM GRIDS
+    --------------------------------- */
+    .p2-row-2,
+    .p2-row-4,
+    .p3-row-3,
+    .p3-row-45,
+    .p3-left-stack,
+    .p3-right-stack,
+    .p3-row-8,
+    .p4-row-73,
+    .p4-row-64,
+    .p5-row-64 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ---------------------------------
+       VIDEO FIX (NO CROP)
+    --------------------------------- */
+    video {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+    }
+
+    /* ---------------------------------
+       CONTACT GRID
+    --------------------------------- */
+    .contact-info {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    /* ---------------------------------
+       FOOTER
+    --------------------------------- */
+    .footer-top {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        text-align: center;
+    }
+}
 
     </style>
 </head>
@@ -2155,8 +2401,9 @@ a,
                 <div class="category-content">
                     <ul>
                         <li>Telugu (Native)</li>
-                        <li>Kannada (Fluent)</li>
                         <li>English (Fluent)</li>
+
+                        <li>Kannada (Fluent)</li>
                         <li>Hindi (Conversational)</li>
                     </ul>
                 </div>
@@ -2550,11 +2797,11 @@ a,
                     <img src="project1/6.png" alt="GSEN Elevation" loading="lazy">
                     <div class="image-number">7</div>
                 </div>
-            </div><div class="project-image-item" data-image="7">
-                    <img src="project1/7.png" alt="GSEN Elevation" loading="lazy">
-                    <div class="image-number">7</div>
-                </div>
             </div>
+<div class="project-image-item no-force" data-image="8">
+    <img src="project1/7.png" alt="GSEN Image 8" loading="lazy">
+</div>
+
 
             
             <div class="project-details-section">
@@ -2744,20 +2991,29 @@ a,
         <!-- ===============================
              PROJECT 3 – CUSTOM JURY LAYOUT
         ================================ -->
-        <div class="p3-grid">
+        <div class="p3-video-wrapper">
 
-            <!-- ROW 0 – VIDEO (INTRO) -->
-            <div class="p3-video-wrapper">
-                <video
-                    id="p3Video"
-                    src="project3/video.mp4"
-                    poster="project3/video-thumbnail.png"
-                    preload="metadata">
-                </video>
+    <video
+        id="p3Video"
+        src="project3/video.mp4"
+        poster="project3/video-thumbnail.png"
+        preload="metadata">
+    </video>
 
-                <button class="p3-video-btn" id="p3VideoBtn">▶</button>
-            </div>
+    <!-- CENTER PLAY / PAUSE -->
+    <button class="p3-video-btn" id="p3VideoBtn">▶</button>
 
+    <!-- VIDEO SLIDER -->
+    <input
+        type="range"
+        id="p3VideoSlider"
+        class="p3-video-slider"
+        min="0"
+        max="100"
+        value="0"
+        step="0.1"
+    />
+</div>
             <!-- ROW 1 -->
             <div class="project-image-item p3-full" data-image="1">
                 <img src="project3/1.png">
@@ -3882,20 +4138,23 @@ document.addEventListener('click', (e) => {
     thumb.setAttribute('data-image', tempIndex);
 });
 /* ===============================
-   PROJECT 3 – VIDEO CONTROLS (FIXED)
+   PROJECT 3 – VIDEO CONTROLS + SLIDER
 ================================ */
 
 const p3Video = document.getElementById('p3Video');
 const p3Btn = document.getElementById('p3VideoBtn');
+const p3Slider = document.getElementById('p3VideoSlider');
+const p3Wrapper = document.querySelector('#project3Detail .p3-video-wrapper');
 
-if (p3Video && p3Btn) {
+if (p3Video && p3Btn && p3Slider) {
 
-    // Toggle play / pause
+    // ▶️ Play / Pause
     p3Btn.addEventListener('click', () => {
         if (p3Video.paused) {
             p3Video.play();
             p3Btn.textContent = '⏸';
             p3Btn.style.opacity = '0.6';
+            p3Wrapper.classList.add('playing');
         } else {
             p3Video.pause();
             p3Btn.textContent = '▶';
@@ -3903,21 +4162,27 @@ if (p3Video && p3Btn) {
         }
     });
 
-    // ✅ RESET WHEN VIDEO ENDS (THIS WAS MISSING)
+    // 🎚 Update slider as video plays
+    p3Video.addEventListener('timeupdate', () => {
+        const progress = (p3Video.currentTime / p3Video.duration) * 100;
+        p3Slider.value = progress;
+    });
+
+    // ⏩ Scrub video using slider
+    p3Slider.addEventListener('input', () => {
+        const time = (p3Slider.value / 100) * p3Video.duration;
+        p3Video.currentTime = time;
+    });
+
+    // 🔁 Reset when video ends
     p3Video.addEventListener('ended', () => {
-        p3Video.currentTime = 0;      // rewind to start
-        p3Btn.textContent = '▶';      // reset icon
-        p3Btn.style.opacity = '1';    // restore visibility
+        p3Video.currentTime = 0;
+        p3Slider.value = 0;
+        p3Btn.textContent = '▶';
+        p3Btn.style.opacity = '1';
+        p3Wrapper.classList.remove('playing');
     });
 }
-document.querySelectorAll('.work-item.coming-soon').forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        comingSoonModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    });
-});
-
 
     </script>
 </body>
