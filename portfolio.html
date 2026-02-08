@@ -131,6 +131,23 @@
     color: #fff;
 }
 
+/* Mobile navigation */
+@media (max-width: 768px) {
+    .nav-container {
+        top: 20px;
+        right: 20px;
+    }
+    
+    .nav-menu {
+        gap: 10px;
+    }
+    
+    .nav-item a {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
         /* ===============================
            Section 1 – Hero
         ================================ */
@@ -139,6 +156,8 @@
             height: 100vh;
             position: relative;
             overflow: hidden;
+            display: flex !important;
+            align-items: center;
         }
 
         /* Background image */
@@ -233,6 +252,7 @@
     -ms-hyphens: auto;
 }
 
+
         /* ===============================
            Scrolling Name (Bottom)
         ================================ */
@@ -250,7 +270,6 @@
         ================================ */
         .section {
             min-height: 100vh;
-            height: 100vh;
             padding: 80px 50px;
             display: flex;
             flex-direction: column;
@@ -276,12 +295,13 @@
 /* Section title */
 .section-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 800;
     margin-bottom: 36px;
     color: var(--text-color);
     text-align: center;
     letter-spacing: 0.5px;
+    padding: 0 20px;
 }
 
 /* Grid layout */
@@ -291,13 +311,14 @@
     gap: 24px;
     max-width: 1600px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Card */
 .about-category {
     background: rgba(26, 31, 46, 0.7);
     border-radius: var(--border-radius);
-    padding: 16px;
+    padding: 20px;
     border: 1px solid rgba(255,255,255,0.05);
     display: flex;
     flex-direction: column;
@@ -341,7 +362,7 @@
 .category-content ul:not(.skills-list) li {
     position: relative;
     padding-left: 16px;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     font-size: 0.85rem;
 }
 
@@ -433,12 +454,14 @@
         ================================ */
         #projects {
             background: var(--bg-color);
+            padding: 80px 30px;
         }
 
         .works-container {
             max-width: 2500px;
             margin: 0 auto;
-            width: 103%;
+            width: 100%;
+            padding: 0 20px;
         }
 
         .works-grid {
@@ -528,6 +551,11 @@
     transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
+.work-item:hover .work-view-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ===============================
    PROJECT 6 – COMING SOON (ANIMATED TEXT)
 ================================ */
@@ -593,6 +621,7 @@
 
 #odds {
     background: var(--bg-light);
+    padding: 80px 30px;
 }
 
 .odds-container {
@@ -644,6 +673,7 @@
         /* Section 5 - Contact */
         #contact {
             background: linear-gradient(135deg, #0A0E17 0%, #1A1F2E 100%);
+            padding: 80px 30px;
         }
 
         .contact-container {
@@ -696,6 +726,9 @@
     transition: transform 0.3s ease;
 }
 
+.contact-icon:hover {
+    transform: scale(1.1);
+}
 
         /* ===============================
            Project Detail Page
@@ -748,19 +781,22 @@
         }
 
         .project-detail-title {
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: var(--primary-light);
-            margin-bottom: 25px;
-        }
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    color: var(--primary-light);
+    margin-bottom: 25px;
+    line-height: 1.2;
+    padding: 0 20px;
+}
 
-        .project-detail-description {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            line-height: 1.7;
-            max-width: 900px;
-            margin: 0 auto 40px;
-        }
+.project-detail-description {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
 
         /* ===============================
            NARRATIVE IMAGE LAYOUT (Jury Style)
@@ -1054,6 +1090,7 @@
 /* Remove extra top padding from Selected Works 2 */
 #projects-2 {
     padding-top: 20px !important;
+    padding-bottom: 80px !important;
 }
 
 /* Reduce bottom padding of Selected Works 1 */
@@ -1061,15 +1098,7 @@
     padding-bottom: 20px !important;
 }
 
-/* Prevent forced full-height spacing */
-#projects,
-#projects-2 {
-    min-height: auto !important;
-    height: auto !important;
-}
-
 /* ===============================
-   /* ===============================
    PROJECT 3 – CUSTOM JURY GRID
 ================================ */
 /* ===============================
@@ -1078,7 +1107,7 @@
 
 #project3Detail .p3-video-wrapper {
     width: 100%;
-    height: 100vh;               /* FULL SCREEN */
+    height: auto;
     max-height: 100vh;
 }
 
@@ -1532,36 +1561,37 @@
            Hero Contact Overlay
         ================================ */
         .hero-contact {
-            position: absolute;
-            bottom: 125px;
-            right: clamp(24px, 6vw, 90px);
-            z-index: 5;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            text-align: right;
-        }
+    position: absolute;
+    bottom: 125px;
+    right: clamp(24px, 6vw, 90px);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: right;
+}
 
-        .hero-contact a {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
+.hero-contact a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    white-space: nowrap;
+}
 
-        .hero-contact a i {
-            color: var(--primary-light);
-            font-size: 0.95rem;
-        }
+.hero-contact a i {
+    color: var(--primary-light);
+    font-size: 0.95rem;
+}
 
-        .hero-contact a:hover {
-            color: var(--primary-light);
-            transform: translateX(-4px);
-        }
+.hero-contact a:hover {
+    color: var(--primary-light);
+    transform: translateX(-4px);
+}
 
         /* ===============================
            Enhanced Footer
@@ -1769,16 +1799,11 @@
         }
 
         /* ===============================
-           Responsive Design
+           Responsive Design - CRITICAL FIXES
         ================================ */
         @media (max-width: 1400px) {
-            .scrolling-name {
-                font-size: 6rem;
-            }
-            
             .hero-right-content {
                 max-width: 450px;
-                right: 60px;
             }
             
             .hero-role {
@@ -1799,13 +1824,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .scrolling-name {
-                font-size: 5rem;
-            }
-            
             .hero-right-content {
                 max-width: 400px;
-                right: 50px;
             }
             
             .hero-role {
@@ -1813,11 +1833,11 @@
             }
             
             .hero-description {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .section-title {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
             
             .project-image-item.portrait {
@@ -1827,27 +1847,23 @@
             .project-image-item.square {
                 width: 85%;
             }
+            
+            .contact-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 992px) {
-            .scrolling-name {
-                font-size: 4rem;
-                animation: scrollName 15s linear;
-            }
-            
             .hero-right-content {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
                 max-width: 600px;
-                margin: 100px auto 0;
+                margin: 0 auto;
                 text-align: center;
                 padding: 0 30px;
             }
             
             .hero-description {
                 text-align: center;
+                max-width: 100%;
             }
             
             .back-to-portfolio {
@@ -1866,13 +1882,55 @@
             .project-image-item.square {
                 width: 90%;
             }
+            
+            .hero-contact {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin-top: 40px;
+                text-align: center;
+                align-items: center;
+            }
         }
 
         @media (max-width: 768px) {
+            /* FIX: Prevent text overlap */
             .section {
-                padding: 80px 20px 60px;
-                height: auto;
-                min-height: 100vh;
+                padding: 80px 20px !important;
+                height: auto !important;
+                min-height: 100vh !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+            }
+            
+            /* FIX: Hero section mobile layout */
+            #home {
+                height: 100vh !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            .hero-right-content {
+                margin: 0 auto !important;
+                padding: 20px !important;
+                text-align: center !important;
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+            }
+            
+            .hero-role {
+                margin-bottom: 20px !important;
+                font-size: 1.5rem !important;
+            }
+            
+            .hero-description {
+                margin-top: 20px !important;
+                text-align: center !important;
+                max-width: 100% !important;
             }
             
             .nav-container {
@@ -1882,7 +1940,6 @@
             
             .nav-menu {
                 gap: 10px;
-                padding: 8px 15px;
             }
             
             .nav-item a {
@@ -1890,167 +1947,216 @@
                 padding: 6px 12px;
             }
             
-            .about-grid, .works-grid, .odds-grid, .contact-info {
-                grid-template-columns: 1fr;
-            }
-            
-            .scrolling-name {
-                font-size: 3rem;
-                animation: scrollName 12s linear;
-            }
-            
-            .hero-role {
-                font-size: 1.4rem;
-                margin-bottom: 20px;
-            }
-            
-            .hero-description {
-                font-size: 1rem;
-            }
-            
-            .hero-right-content {
-                margin: 80px auto 0;
-                padding: 0 20px;
+            /* FIX: Grid layouts for mobile */
+            .about-grid, .works-grid, .odds-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
             }
             
             .section-title {
-                font-size: 2.2rem;
-                margin-bottom: 40px;
+                font-size: 2rem !important;
+                margin-bottom: 40px !important;
+                line-height: 1.2 !important;
             }
             
             .work-item {
-                height: 280px;
+                height: 300px !important;
             }
             
             .project-detail-container {
-                padding: 80px 20px 40px;
+                padding: 80px 20px 40px !important;
             }
             
             .project-detail-title {
-                font-size: 2rem;
+                font-size: 2rem !important;
             }
             
             .back-to-portfolio {
-                left: 20px;
-                padding: 8px 15px;
-                font-size: 12px;
+                left: 20px !important;
+                padding: 8px 15px !important;
+                font-size: 12px !important;
             }
             
+            /* FIX: Project images mobile */
             .project-image-item.landscape,
             .project-image-item.portrait,
             .project-image-item.square {
-                width: 100%;
-                max-width: 100%;
+                width: 100% !important;
+                max-width: 100% !important;
+                max-height: none !important;
             }
             
             .project-images-narrative {
-                gap: 30px;
+                gap: 30px !important;
             }
             
             .project-detail-description {
-                font-size: 1.1rem;
+                font-size: 1rem !important;
+                padding: 0 10px !important;
             }
 
-            /* Mobile adjustments for lightbox */
+            /* FIX: Lightbox mobile */
             .lightbox-main-image.landscape img {
-                max-width: 95%;
-                max-height: 60vh;
+                max-width: 95% !important;
+                max-height: 60vh !important;
             }
             
             .lightbox-main-image.portrait img {
-                max-width: 85%;
-                max-height: 75vh;
+                max-width: 85% !important;
+                max-height: 75vh !important;
             }
             
             .lightbox-main-image.square img {
-                max-width: 85%;
-                max-height: 70vh;
+                max-width: 85% !important;
+                max-height: 70vh !important;
             }
 
-            /* GSEN grid mobile adjustments */
+            /* FIX: GSEN grid mobile */
             .gsen-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
             }
             
             .gsen-full {
-                grid-column: 1;
+                grid-column: 1 !important;
             }
             
             .gsen-row-2 {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
             }
             
             .gsen-row-2-right {
-                grid-template-rows: auto;
-                gap: 20px;
+                grid-template-rows: auto !important;
+                gap: 20px !important;
+            }
+            
+            /* FIX: Contact info mobile */
+            .contact-info {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .contact-item {
+                padding: 20px !important;
+            }
+            
+            /* FIX: Footer mobile */
+            .footer-top {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                text-align: center !important;
+            }
+            
+            .footer-links,
+            .footer-contact {
+                align-items: center !important;
+            }
+            
+            .footer-bottom {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 20px !important;
+            }
+            
+            /* FIX: Project grids mobile */
+            .p2-row-2,
+            .p2-row-4,
+            .p3-row-3,
+            .p3-row-45,
+            .p3-left-stack,
+            .p3-right-stack,
+            .p3-row-8,
+            .p4-row-73,
+            .p4-row-64,
+            .p5-row-64 {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            /* FIX: Video sizing mobile */
+            video {
+                width: 100% !important;
+                height: auto !important;
+                max-height: 50vh !important;
+                object-fit: contain !important;
+            }
+            
+            /* FIX: Current section indicator mobile */
+            .current-section-indicator {
+                display: none !important;
+            }
+            
+            /* FIX: Scroll indicator mobile */
+            .scroll-indicator {
+                bottom: 30px !important;
+                font-size: 12px !important;
             }
         }
 
         @media (max-width: 480px) {
-            .scrolling-name {
-                font-size: 2.2rem;
-                animation: scrollName 10s linear;
+            .hero-role {
+                font-size: 1.3rem !important;
             }
             
-            .hero-role {
-                font-size: 1.2rem;
+            .hero-subrole {
+                font-size: 0.9rem !important;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.8rem !important;
             }
             
             .about-category, .odds-item, .contact-item {
-                padding: 20px;
+                padding: 15px !important;
             }
             
             .category-title {
-                font-size: 1.2rem;
+                font-size: 1rem !important;
             }
             
             .category-content li {
-                font-size: 0.85rem;
+                font-size: 0.85rem !important;
             }
             
             .work-item {
-                height: 250px;
+                height: 250px !important;
             }
             
             .project-detail-title {
-                font-size: 1.8rem;
+                font-size: 1.8rem !important;
             }
             
             .project-detail-description {
-                font-size: 1rem;
+                font-size: 0.9rem !important;
             }
             
             .project-details-section {
-                padding: 25px;
+                padding: 20px !important;
             }
             
             .project-details-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
+            }
+            
+            .portfolio-name {
+                font-size: 12px !important;
+                left: 15px !important;
+                top: 15px !important;
+            }
+            
+            .hero-contact {
+                position: relative !important;
+                margin-top: 30px !important;
+                text-align: center !important;
+                align-items: center !important;
+            }
+            
+            .hero-contact a {
+                font-size: 0.8rem !important;
             }
         }
 
-        @media (max-width: 900px) {
-            .footer-top {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .footer-links,
-            .footer-contact {
-                align-items: center;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
 /* FORCE MONOCHROME */
 * {
     color-scheme: dark;
@@ -2093,11 +2199,13 @@ a,
         min-height: auto !important;
         height: auto !important;
         padding: 60px 20px !important;
+        overflow: visible !important;
     }
 
     .zoom-container {
         transform: none !important;
         height: auto !important;
+        justify-content: flex-start !important;
     }
 
     .section.zooming,
@@ -2106,11 +2214,16 @@ a,
     }
 
     /* ---------------------------------
-       HERO FIX
+       HERO FIX - COMPLETE OVERHAUL
     --------------------------------- */
     #home {
-        min-height: 100vh;
-        height: auto;
+        min-height: 100vh !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 20px !important;
     }
 
     .hero-right-content {
@@ -2118,21 +2231,25 @@ a,
         top: auto !important;
         left: auto !important;
         transform: none !important;
-        margin: 120px auto 0;
-        text-align: center;
-        max-width: 90%;
+        margin: 0 auto !important;
+        text-align: center !important;
+        max-width: 100% !important;
+        padding: 20px !important;
     }
 
     .hero-description {
-        margin-top: 40px !important;
-        text-align: center;
+        margin-top: 30px !important;
+        text-align: center !important;
+        max-width: 100% !important;
     }
 
     .hero-contact {
-        position: static;
-        margin-top: 40px;
-        align-items: center;
-        text-align: center;
+        position: relative !important;
+        margin-top: 40px !important;
+        align-items: center !important;
+        text-align: center !important;
+        right: auto !important;
+        bottom: auto !important;
     }
 
     /* ---------------------------------
@@ -2140,16 +2257,17 @@ a,
     --------------------------------- */
     .works-grid {
         grid-template-columns: 1fr !important;
-        gap: 16px !important;
+        gap: 20px !important;
     }
 
     .work-item {
         height: auto !important;
+        min-height: 300px !important;
     }
 
     .work-img {
         height: auto !important;
-        object-fit: cover;
+        object-fit: cover !important;
     }
 
     /* ---------------------------------
@@ -2177,6 +2295,7 @@ a,
     .gsen-row-2,
     .gsen-row-2-right {
         grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
     }
 
     /* ---------------------------------
@@ -2193,6 +2312,7 @@ a,
     .p4-row-64,
     .p5-row-64 {
         grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
     }
 
     /* ---------------------------------
@@ -2201,7 +2321,7 @@ a,
     video {
         width: 100% !important;
         height: auto !important;
-        max-height: none !important;
+        max-height: 50vh !important;
         object-fit: contain !important;
     }
 
@@ -2210,7 +2330,7 @@ a,
     --------------------------------- */
     .contact-info {
         grid-template-columns: 1fr !important;
-        gap: 20px;
+        gap: 20px !important;
     }
 
     /* ---------------------------------
@@ -2218,8 +2338,8 @@ a,
     --------------------------------- */
     .footer-top {
         grid-template-columns: 1fr !important;
-        gap: 30px;
-        text-align: center;
+        gap: 30px !important;
+        text-align: center !important;
     }
 }
 /* =================================================
@@ -2232,14 +2352,22 @@ a,
        REMOVE FLEX CENTERING
     --------------------------------- */
     .section {
-        display: block !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
         padding: 60px 20px !important;
+        overflow: visible !important;
     }
 
     .zoom-container {
-        display: block !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
         transform: none !important;
         height: auto !important;
+        width: 100% !important;
     }
 
     /* ---------------------------------
@@ -2248,18 +2376,25 @@ a,
     .hero-right-content {
         position: static !important;
         transform: none !important;
-        margin: 120px auto 40px !important;
+        margin: 0 auto 40px !important;
         text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 15px !important;
     }
 
     .hero-role {
         margin: 0 0 20px 0 !important;
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
     }
 
     .hero-description {
-        margin-top: 0 !important;
+        margin-top: 20px !important;
         max-width: 100% !important;
         text-align: center !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
     }
 
     /* ---------------------------------
@@ -2268,17 +2403,33 @@ a,
     .portfolio-name,
     .nav-container,
     .scroll-indicator {
-        position: static !important;
+        position: fixed !important;
         transform: none !important;
-        margin-bottom: 20px;
-        text-align: center;
+        margin: 0 !important;
+    }
+
+    .portfolio-name {
+        top: 15px !important;
+        left: 15px !important;
+    }
+    
+    .nav-container {
+        top: 15px !important;
+        right: 15px !important;
+    }
+    
+    .scroll-indicator {
+        bottom: 30px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 
     .hero-contact {
         position: static !important;
-        margin-top: 20px;
-        align-items: center;
-        text-align: center;
+        margin-top: 30px !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
     }
 
     /* ---------------------------------
@@ -2287,19 +2438,29 @@ a,
     .section-title {
         margin-bottom: 30px !important;
         line-height: 1.2 !important;
+        font-size: 1.8rem !important;
+        text-align: center !important;
+        padding: 0 15px !important;
+        width: 100% !important;
     }
 
     /* ---------------------------------
        WORK ITEMS TEXT
     --------------------------------- */
     .work-overlay {
-        position: static !important;
-        background: none !important;
-        padding: 15px 0 !important;
+        position: absolute !important;
+        background: linear-gradient(transparent, rgba(10, 14, 23, 0.95)) !important;
+        padding: 20px !important;
     }
 
     .work-title {
-        margin-bottom: 10px;
+        margin-bottom: 10px !important;
+        font-size: 1.2rem !important;
+    }
+    
+    .work-description {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
     }
 
     /* ---------------------------------
@@ -2307,13 +2468,92 @@ a,
     --------------------------------- */
     .project-detail-header {
         margin-bottom: 30px !important;
+        width: 100% !important;
     }
 
     .project-detail-description {
         margin-bottom: 30px !important;
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+
+    /* ---------------------------------
+       ABOUT GRID TEXT
+    --------------------------------- */
+    .about-category {
+        padding: 15px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .category-title {
+        font-size: 1rem !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .category-content {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .category-content li {
+        margin-bottom: 8px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* ---------------------------------
+       PREVENT TEXT CUTOFF
+    --------------------------------- */
+    .work-description,
+    .hero-description,
+    .category-content,
+    .project-detail-description {
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: normal !important;
+        -webkit-line-clamp: unset !important;
+        display: block !important;
+    }
+    
+    /* ---------------------------------
+       ENSURE PROPER SPACING
+    --------------------------------- */
+    .works-grid,
+    .about-grid,
+    .odds-grid {
+        gap: 20px !important;
+        margin-bottom: 40px !important;
     }
 }
 
+/* ===============================
+   FIX FOR VERY SMALL SCREENS
+================================ */
+@media (max-width: 360px) {
+    .hero-role {
+        font-size: 1.2rem !important;
+    }
+    
+    .hero-description {
+        font-size: 0.8rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .work-title {
+        font-size: 1rem !important;
+    }
+    
+    .work-description {
+        font-size: 0.8rem !important;
+    }
+    
+    .nav-item a {
+        font-size: 11px !important;
+        padding: 5px 10px !important;
+    }
+}
     </style>
 </head>
 <body>
